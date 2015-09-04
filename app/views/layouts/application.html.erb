@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TechTalentBlog</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="">
+    <ul class="nav nav-pills">
+      <li role="presentation"><%= link_to "All Posts", root_path, class: "btn btn-info" %></li>
+      <li role="presentation"><%= link_to "Create Post", new_blog_post_path, class: "btn btn-primary" %></li>
+     <% if user_signed_in? %>
+      <li> <%= link_to "Your Posts", your_post_path, class: "btn btn-success" %> </li>
+     <li> <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %> </li>
+      <li> <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %> </li>
+      <% end %>
+</ul>
+  </div>
+</nav>
+
+
+	<div class="container">
+
+<%= yield %>
+</div>
+</body>
+</html>
+
